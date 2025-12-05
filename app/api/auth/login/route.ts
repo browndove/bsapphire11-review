@@ -3,7 +3,7 @@ import { Pool } from 'pg'
 const bcrypt = require('bcrypt')
 
 const pool = new Pool({
-  connectionString: 'postgresql://neondb_owner:npg_qpVXRjeW3v0y@ep-summer-mode-adt3xx71-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require',
+  connectionString: process.env.DATABASE_URL,
 })
 
 // Simple JWT-like token generation (in production, use proper JWT)
@@ -88,4 +88,11 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     )
   }
+}
+
+export async function GET() {
+  return NextResponse.json(
+    { error: 'Method not allowed. Use POST for login.' },
+    { status: 405 }
+  )
 }
