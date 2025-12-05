@@ -17,6 +17,11 @@ function generateToken(userId: string): string {
 }
 
 export async function POST(request: NextRequest) {
+  console.log('=== LOGIN API CALLED ===')
+  console.log('Method:', request.method)
+  console.log('URL:', request.url)
+  console.log('Headers:', Object.fromEntries(request.headers.entries()))
+  
   try {
     const { email, password } = await request.json()
 
@@ -90,9 +95,19 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  console.log('=== LOGIN API GET CALLED ===')
+  console.log('Method:', request.method)
+  console.log('URL:', request.url)
+  console.log('Headers:', Object.fromEntries(request.headers.entries()))
+  
   return NextResponse.json(
-    { error: 'Method not allowed. Use POST for login.' },
+    { 
+      error: 'Method not allowed. Use POST for login.',
+      method: request.method,
+      url: request.url,
+      timestamp: new Date().toISOString()
+    },
     { status: 405 }
   )
 }
