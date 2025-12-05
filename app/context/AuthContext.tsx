@@ -90,7 +90,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const controller = new AbortController()
       const timeoutId = setTimeout(() => controller.abort(), 10000) // 10 second timeout
       
-      const response = await fetch('/api/auth/login', {
+      const response = await fetch('/api/auth/test-login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

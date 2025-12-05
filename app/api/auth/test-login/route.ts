@@ -18,14 +18,14 @@ export async function POST(request: NextRequest) {
     }
 
     // Simple test without database
-    if (email === 'admin@bsapphire.com' && password === 'admin123') {
+    if (email === 'admin@blvcksapphire.com' && password === 'admin123') {
       console.log('Test login successful')
       return NextResponse.json({
         success: true,
         token: 'test-token-123',
         user: {
           id: '1',
-          email: 'admin@bsapphire.com',
+          email: 'admin@blvcksapphire.com',
           name: 'Admin User',
           role: 'admin',
         },

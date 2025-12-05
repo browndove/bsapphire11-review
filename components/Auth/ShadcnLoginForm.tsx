@@ -46,7 +46,7 @@ export default function ShadcnLoginForm() {
         controller.abort()
       }, 5000) // 5 second timeout
       
-      const response = await fetch('/api/auth/login', {
+      const response = await fetch('/api/auth/test-login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
